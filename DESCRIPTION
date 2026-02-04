@@ -1,9 +1,11 @@
 Package: hrdemcan
-Title: What the Package Does (One Line, Title Case)
+Title: Access Canada's High Resolution Digital Elevation Model (HRDEM)
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Brendan", "Brooks", , "brendanchristopherbrooks@gmail.com", role = c("aut", "cre"),
+    comment = c(ORCID = "0009-0004-2185-9401"))
+Description: Convenience functions for succinctly querying and downloading
+             Canada's digital surface and terrain models.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
