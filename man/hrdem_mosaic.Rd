@@ -52,7 +52,7 @@ rasters <-
 
 raster <-
   hrdem_mosaic(rasters,
-               methods = "bilinear",
+               method = "bilinear",
                fun = "mean")
 
 terra::plot(raster)
