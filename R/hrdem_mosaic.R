@@ -1,3 +1,53 @@
+#' Combine Accessed Digital Elevation Data
+#'
+#' Combine accessed high resolution digital elevation data into a single
+#' mosaciked raster.  Rasters are resampled to the resolution of the lowest
+#' resolution raster using bilinear interpolation and overlapping cells are
+#' averaged, by default.
+#'
+#' @param x a list of SpatRasters
+#' @param method a character; the method used to estimate resampled cell values.
+#'               Can be "near", "bilinear", "cubic", "cublicspline", "lanczos",
+#'               "sum", "min", "q1", "med", "q3", "max", "average", "mode", or
+#'               "rms".
+#' @param fun a character; the function used to assign values to overlapping
+#'            cells.  Can be "mean", "median", "min", "max", "modal", "sum",
+#'            "first", or "last".
+#'
+#' @returns SpatRaster
+#' @export
+#'
+#' @examples
+#' point <-
+#'   sf::st_point(c(-97.79828, 49.97858)) |>
+#'   sf::st_sfc(crs = 4326L) |>
+#'   sf::st_transform(26914L)
+#'
+#' buffer <-
+#'   sf::st_buffer(point, 403L)
+#'
+#' temp_path <-
+#'   tempdir()
+#'
+#' hrdem_dl(buffer, temp_path, "dtm", "vrt")
+#'
+#' file_paths <-
+#'   list.files(temp_path,
+#'              pattern = "\\.vrt$",
+#'              full.names = TRUE)
+#'
+#' rasters <-
+#'   lapply(file_paths,
+#'          terra::rast)
+#'
+#' raster <-
+#'   hrdem_mosaic(rasters,
+#'                methods = "bilinear",
+#'                fun = "mean")
+#'
+#' terra::plot(raster)
+#'
+#' file.remove(file_paths)
 hrdem_mosaic <-
   function(x,
            method = "bilinear",
