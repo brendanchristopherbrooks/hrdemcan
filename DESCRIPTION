@@ -1,6 +1,6 @@
 Package: hrdemcan
 Title: Access Canada's High Resolution Digital Elevation Model (HRDEM)
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person("Brendan", "Brooks", , "brendanchristopherbrooks@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0009-0004-2185-9401"))
